@@ -1,0 +1,68 @@
+<span class="text-xs md:text-sm text-gray-400">ঘণ্টা</span>
+        </div>
+        <div class="timer-box w-20 h-24 md:w-28 md:h-32 flex flex-col items-center justify-center rounded-xl">
+            <span id="minutes" class="text-3xl md:text-5xl font-bold neon-text">00</span>
+            <span class="text-xs md:text-sm text-gray-400">মিনিট</span>
+        </div>
+        <div class="timer-box w-20 h-24 md:w-28 md:h-32 flex flex-col items-center justify-center rounded-xl">
+            <span id="seconds" class="text-3xl md:text-5xl font-bold text-red-500">00</span>
+            <span class="text-xs md:text-sm text-gray-400">সেকেন্ড</span>
+        </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 w-full max-w-4xl mb-14">
+        <div class="course-card p-8 rounded-2xl text-center border-t-2 border-t-green-500">
+            <h3 class="text-2xl font-bold mb-3">মোবাইল ক্যালিগ্রাফি কোর্স</h3>
+            <p class="text-gray-400 mb-6">স্মার্টফোনেই শিখুন আধুনিক ক্যালিগ্রাফি</p>
+            <div class="text-3xl font-bold">
+                <span class="old-price">৳১২০০</span> 
+                <span class="neon-text">৳৩২০ মাত্র</span>
+            </div>
+        </div>
+
+        <div class="course-card p-8 rounded-2xl text-center border-t-2 border-t-green-500">
+            <h3 class="text-2xl font-bold mb-3">কম্পিউটার ক্যালিগ্রাফি কোর্স</h3>
+            <p class="text-gray-400 mb-6">পিসি বা ল্যাপটপে প্রফেশনাল ডিজাইন</p>
+            <div class="text-3xl font-bold">
+                <span class="old-price">৳২০০০</span> 
+                <span class="neon-text">৳৫২০ মাত্র</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center space-y-8">
+        <p class="text-xl text-gray-200">
+            <span class="neon-text font-bold">৭৪% ঈদ অফারে</span> সিট বুক করতে নিচের লিংকে ক্লিক করুন
+        </p>
+        <a href="https://khattussunnaheidfrom.netlify.app/" target="_blank" 
+           class="cta-btn inline-block px-14 py-5 rounded-full text-2xl font-bold transition-all duration-300 transform shadow-xl">
+            রেজিস্ট্রেশন করুন
+        </a>
+    </div>
+
+    <script>
+        // অফার শেষ হওয়ার সময়: ২৫ মার্চ ২০২৬ রাত ১১:৫৯:৫৯ (Midnight)
+        const targetDate = new Date("March 25, 2026 23:59:59").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = d < 10 ? "0"+d : d;
+            document.getElementById("hours").innerHTML = h < 10 ? "0"+h : h;
+            document.getElementById("minutes").innerHTML = m < 10 ? "0"+m : m;
+            document.getElementById("seconds").innerHTML = s < 10 ? "0"+s : s;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.body.innerHTML = "<div class='flex items-center justify-center h-screen bg-black text-3xl neon-text font-bold'>এই অফারটির সময় শেষ হয়ে গেছে!</div>";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
